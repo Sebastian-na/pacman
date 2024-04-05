@@ -113,12 +113,13 @@ function animate() {
   if (player.velocity.y > 0) player.rotation = Math.PI / 2
   if (player.velocity.y < 0) player.rotation = -Math.PI / 2
 
-  animationId = requestAnimationFrame(animate)
+  for (let i = ghosts.length - 1; i >= 0; i--) {
+    console.log("beeee")
 
-  for (let i = ghosts.length - 1; i <= 0; i--) {
     if (
       getIntersectionAxis(ghosts[i].getBoundingRect(), player.getBoundingRect())
     ) {
+      console.log("hola")
       if (ghosts[i].scared) {
         ghosts.splice(i, 1)
         score += 100
@@ -130,6 +131,8 @@ function animate() {
       }
     }
   }
+
+  animationId = requestAnimationFrame(animate)
 }
 
 function moveElement(

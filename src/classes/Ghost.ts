@@ -21,7 +21,6 @@ class Ghost implements Positionable, Movement {
   private boundaries: Boundary[]
   public previousPathways: Key[] = []
   public color = "red"
-  public originalColor = "red"
   public scared = false
 
   constructor({
@@ -158,17 +157,22 @@ class Ghost implements Positionable, Movement {
     })
   }
 
-  static createInitialGhost(ctx: CanvasRenderingContext2D) {
+  static createInitialGhost(
+    ctx: CanvasRenderingContext2D,
+    position: Vector2,
+    color: string
+  ) {
     return new Ghost({
       position: {
-        x: Boundary.width * 7 + Boundary.width / 2,
-        y: Boundary.width * 2 + Boundary.width / 2,
+        x: Boundary.width * position.x + Boundary.width / 2,
+        y: Boundary.width * position.y + Boundary.width / 2,
       },
       velocity: {
         x: 0,
         y: 1,
       },
       ctx,
+      color,
     })
   }
 
