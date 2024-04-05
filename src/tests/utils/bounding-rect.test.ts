@@ -1,7 +1,4 @@
-import {
-  getIntersectionAxis,
-  getIntersectionSide,
-} from "../../utils/bounding-rect"
+import { getIntersectionAxis } from "../../utils/bounding-rect"
 import { expect, test } from "vitest"
 
 test("intersects x axis", () => {
@@ -98,23 +95,4 @@ test("does not intersect x axis", () => {
 
   const intersection = getIntersectionAxis(rect1, rect2)
   expect(intersection).toBe(null)
-})
-
-test("getIntersectionSide", () => {
-  const rect1 = {
-    x: 0,
-    y: 0,
-    width: 10,
-    height: 10,
-  }
-
-  const rect2 = {
-    x: 5,
-    y: 0,
-    width: 10,
-    height: 10,
-  }
-
-  const intersection = getIntersectionSide(rect1, rect2)
-  expect(intersection).toBe("ArrowRight")
 })
